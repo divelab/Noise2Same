@@ -78,9 +78,9 @@ class Noise2Same(object):
                 rawpreds = conv_op(rawout, self.in_channels, 1, 1, False, name = 'out_conv')
             
             # Loss components
-            loss_mse = tf.reduce_mean(tf.square(rawpreds-features), axis=None)
-            inv_mse = tf.reduce_sum(tf.square(rawpreds - preds)*mask) / tf.reduce_sum(mask)
-            rec_mse = tf.reduce_sum(tf.square(features - preds)*mask) / tf.reduce_sum(mask)
+            rec_mse = tf.reduce_mean(tf.square(rawpreds - features), axis=None)
+            inv_mse = tf.reduce_sum(tf.square(rawpreds - preds) * mask) / tf.reduce_sum(mask)
+            bsp_mse = tf.reduce_sum(tf.square(features - preds) * mask) / tf.reduce_sum(mask)
 
             # Tensorboard display
             tf.summary.image('1_inputs', image_summary(features), max_outputs=3)
@@ -91,7 +91,7 @@ class Noise2Same(object):
             tf.summary.image('6_rec_error', image_summary(preds-features), max_outputs=3)
             tf.summary.scalar('reconstruction', rec_mse, family='loss_metric') 
             tf.summary.scalar('invariance', inv_mse, family='loss_metric') 
-            tf.summary.scalar('global', loss_mse, family='loss_metric')
+            tf.summary.scalar('blind_spot', bsp_mse, family='loss_metric')
                 
         else:
             with tf.variable_scope('main_unet'):
@@ -102,7 +102,7 @@ class Noise2Same(object):
             return tf.estimator.EstimatorSpec(mode=mode, predictions=preds)
         
         lmbd = 2 if self.lmbd is None else self.lmbd
-        loss = loss_mse + lmbd*tf.sqrt(inv_mse)
+        loss = rec_mse + lmbd*tf.sqrt(inv_mse)
 
         if mode == tf.estimator.ModeKeys.TRAIN:
             global_step = tf.train.get_or_create_global_step()
@@ -120,8 +120,8 @@ class Noise2Same(object):
             train_op = None
         
         metrics = {'loss_metric/invariance':tf.metrics.mean(inv_mse),
-                              'loss_metric/reconstruction':tf.metrics.mean(rec_mse), 
-                              'loss_metric/global':tf.metrics.mean(loss_mse)}
+                              'loss_metric/blind_spot':tf.metrics.mean(bsp_mse), 
+                              'loss_metric/reconstruction':tf.metrics.mean(rec_mse)}
         
         return tf.estimator.EstimatorSpec(mode=mode, predictions=preds, loss=loss, train_op=train_op, 
                                           eval_metric_ops=metrics)
