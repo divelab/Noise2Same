@@ -24,36 +24,36 @@ We have provided four examples in Jupyter Notebook that can reproduce our result
 ### To train, evaluate and predict with your own datasets
 You can follow the examples in Jupyter Notebook for denoising with RGB images, grayscale images and 3D images.
 
-To be specific, the following code is used to build the model.
+#### To be specific, the following code is used to build the model.
 ```
 from models import Noise2Same
 model = Noise2Same(model_dir, model_name, dimension, in_channels)
 ```
 where ``model_dir`` and ``model_name`` will specify the path to your checkpoint files, ``dimension`` refers to the dimension of image *(2 or 3)* and ``in_channels`` refers to the number of channels of input images.
 
-The following code is used for training
+#### The following code is used for **training**.
 ```
 model.train(X, patch_size, validation=X_val, batch_size, steps)
 ```
 where ``X`` and ``X_val`` are the noisy images for training/validation of shape ``[n_samples, width, length, n_channels]`` and of type ``float32``, ``patch_size`` specify the size to crop input images to training patches. Note that the input image should be **normalized** before input for training.
 
-The following codes are for prediction.
+#### The following codes are for **prediction**.
 
-For prediction of single image,
-```
-model.predict(img[, im_mean, im_std])
-```
-where ``img`` is the noisy image for prediction, ``im_mean`` and ``im_std`` are the mean and standard deviation. If ``im_mean`` and ``im_std`` are not specified, it will use ``img.mean()`` and ``img.std()`` by default.
+- For prediction of single image,
+  ```
+  model.predict(img[, im_mean, im_std])
+  ```
+  where ``img`` is the noisy image for prediction, ``im_mean`` and ``im_std`` are the mean and standard deviation. If ``im_mean`` and ``im_std`` are not specified, it will use ``img.mean()`` and ``img.std()`` by default.
 
-For prediction of batched images (and you have enough GPU memory),
-```
-model.batch_predict(images.astype('float32'), batch_size[, im_mean, im_std])
-```
+- For prediction of batched images (and you have enough GPU memory),
+  ```
+  model.batch_predict(images.astype('float32'), batch_size[, im_mean, im_std])
+  ```
 
-For extremely large images, e.g. CARE 3D images,
-```
-model.crop_predict(image, crop_size, overlap[, im_mean, im_std])
-```
+- For extremely large images, e.g. CARE 3D images,
+  ```
+  model.crop_predict(image, crop_size, overlap[, im_mean, im_std])
+  ```
 
 ### Use Noise2Same under other frameworks
 You can follow the pseudocode below to build the Noise2Same model.
