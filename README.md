@@ -1,5 +1,5 @@
 # Noise2Same
-TensorFlow implementation for the paper "Noise2Same: Optimizing A Self-Supervised Bound for Image Denoising"
+TensorFlow implementation for the [paper](https://arxiv.org/abs/2010.11971) "Noise2Same: Optimizing A Self-Supervised Bound for Image Denoising"
 
 <img src="./figures/cover.jpg" width="80%"> 
 <img src="./figures/visual.jpg" width="80%"> 
