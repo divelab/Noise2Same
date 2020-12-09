@@ -1,6 +1,4 @@
-import os, fnmatch, cv2
-import numpy as np
-import matplotlib.pyplot as plt
+import os
 from models import Noise2Same
 import gradio as gr
 
