@@ -2,6 +2,7 @@ import os, fnmatch, cv2
 import numpy as np
 import matplotlib.pyplot as plt
 from models import Noise2Same
+import gradio as gr
 
 os.system("mkdir trained_models/denoising_ImageNet")
 os.system("cd trained_models/denoising_ImageNet")
