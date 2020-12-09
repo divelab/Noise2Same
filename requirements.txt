@@ -1,5 +1,5 @@
-tensorflow==1.15
+tensorflow>=1.15,<2.0
 scipy
-skimage
+scikit-image
 tifffile
 gdown
