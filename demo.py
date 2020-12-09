@@ -19,4 +19,7 @@ def predict(img):
 
 img = gr.inputs.Image()
 
-gr.Interface(predict, "image", "image", examples=[["lion2.png"]], title="Noise2Same: Optimizing A Self-Supervised Bound for Image Denoising").launch()
+title = "Noise2Same: Optimizing A Self-Supervised Bound for Image Denoising"
+description = "A demo of Noise2Same, an image denoising method developed by Yaochen Xie et al. and presented in NeurIPS 2020. This demo uses the ImageNet-trained model. Try it by uploading an image or clicking on an example (could take up to 20s if running on CPU)."
+
+gr.Interface(predict, "image", "image", examples=[["lion2.png"]], title="").launch()
