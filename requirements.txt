@@ -3,3 +3,5 @@ scipy
 scikit-image
 tifffile
 gdown
+opencv-python
+numpy
