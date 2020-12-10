@@ -1,5 +1,6 @@
 # Noise2Same
-TensorFlow implementation for the [paper](https://arxiv.org/abs/2010.11971) "Noise2Same: Optimizing A Self-Supervised Bound for Image Denoising"
+Official TensorFlow implementation for the [paper](https://arxiv.org/abs/2010.11971) presented on NeurIPS 2020 titled
+"*Noise2Same: Optimizing A Self-Supervised Bound for Image Denoising*".
 
 <img src="./figures/cover.jpg" width="80%"> 
 <img src="./figures/visual.jpg" width="80%"> 
@@ -76,4 +77,8 @@ You can create a web-based demo to run inference by running the `demo.py` file, 
 
 Here is a live demo: https://gradio.app/g/Noise2Same
 
+The live demo uses the model pre-trained on 20,000 noisy images generated from ImageNet ILSVRC2012 validation dataset.
+
 ![](https://media4.giphy.com/media/UChzximhl0mGcFVNDp/giphy.gif)
+
+We thank [Abubakar Abid](https://github.com/abidlabs) for building this web demo for us!
