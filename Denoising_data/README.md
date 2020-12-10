@@ -7,7 +7,7 @@ Due to the limitation of repo size, we upload the datasets to Google Drive. You 
 ### How are those datasets generated?
 
 #### RGB Natural Images (ImageNet)
-We construct the RGB natural image dataset from the ImageNet ILSVRC2012 Validation dataset that consists of 50,000 natural images. In particular, we follow [Noise2Self](https://arxiv.org/abs/1901.11365) to generate noisy images by applying a combination of three types of noises to the clear images. The noises are Poisson noise (λ = 30), additive Gaussian noise (μ = 0, σ = 60) and Bernoulli noise (p = 0.2). To be consistent to Noise2Self, we randomly crop 60,000 patches of size $$128 \times 128$$ from the first 20,000 images in ILSVRC2012 Val to construct the training dataset. Additional two sets of 1,000 images from ILSVRC2012 Val are used for validation and testing, respectively.
+We construct the RGB natural image dataset from the ImageNet ILSVRC2012 Validation dataset that consists of 50,000 natural images. In particular, we follow [Noise2Self](https://arxiv.org/abs/1901.11365) to generate noisy images by applying a combination of three types of noises to the clear images. The noises are Poisson noise (λ = 30), additive Gaussian noise (μ = 0, σ = 60) and Bernoulli noise (p = 0.2). To be consistent to Noise2Self, we randomly crop 60,000 patches of size 128 x 128 from the first 20,000 images in ILSVRC2012 Val to construct the training dataset. Additional two sets of 1,000 images from ILSVRC2012 Val are used for validation and testing, respectively.
 
 The code to generate the noisy images can be found in `Denoising_Data/ImageNet/generate_noisy.ipynb`.
 
