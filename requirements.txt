@@ -1,0 +1,7 @@
+tensorflow>=1.15,<2.0
+scipy
+scikit-image
+tifffile
+gdown
+opencv-python
+numpy
