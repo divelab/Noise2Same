@@ -75,3 +75,5 @@ loss = l_rec + 2 * sqrt(l_inv)
 You can create a web-based demo to run inference by running the `demo.py` file, which uses the `gradio` Python library.
 
 Here is a live demo: https://gradio.app/g/Noise2Same
+
+![](https://media4.giphy.com/media/UChzximhl0mGcFVNDp/giphy.gif)
