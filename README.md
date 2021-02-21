@@ -72,6 +72,18 @@ l_inv = reduce_sum((out_raw - out_masked)^2 * mask) / reduce_sum(mask)
 loss = l_rec + 2 * sqrt(l_inv)
 ```
 
+## Reference
+```
+@inproceedings{xie2020noise2same,
+ author = {Xie, Yaochen and Wang, Zhengyang and Ji, Shuiwang},
+ title = {Noise2{S}ame: Optimizing A Self-Supervised Bound for Image Denoising},
+ booktitle = {Advances in Neural Information Processing Systems},
+ pages = {20320--20330},
+ volume = {33},
+ year = {2020}
+}
+```
+
 ## Web Demo
 You can create a web-based demo to run inference by running the `demo.py` file, which uses the `gradio` Python library.
 
@@ -81,4 +93,4 @@ The live demo uses the model pre-trained on 20,000 noisy images generated from I
 
 ![](https://media4.giphy.com/media/UChzximhl0mGcFVNDp/giphy.gif)
 
-We thank [Abubakar Abid](https://github.com/abidlabs) for building this web demo for us!
+We thank [Abubakar Abid](https://github.com/abidlabs) for building this awesome web demo for us!
